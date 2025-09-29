@@ -1,11 +1,11 @@
 import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { Button, Platform, StyleSheet } from 'react-native';
 
 import { HelloWave } from '@/components/hello-wave';
 import ParallaxScrollView from '@/components/parallax-scroll-view';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
+import { Link, router } from 'expo-router';
 
 export default function HomeScreen() {
   return (
@@ -65,6 +65,20 @@ export default function HomeScreen() {
         </ThemedText>
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
+        <ThemedText type="subtitle">🎙️ Voice Calling Feature</ThemedText>
+        <ThemedText>
+          Test the voice calling functionality powered by Agora.io. You can make voice-only calls with other users.
+        </ThemedText>
+        <Button 
+          title="Start Voice Call" 
+          onPress={() => router.push('/voice-call/test-room')}
+          color="#007AFF"
+        />
+        <ThemedText style={styles.note}>
+          Note: You'll need to set up your Agora App ID in config/agora.js to use this feature.
+        </ThemedText>
+      </ThemedView>
+      <ThemedView style={styles.stepContainer}>
         <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
         <ThemedText>
           {`When you're ready, run `}
@@ -94,5 +108,11 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     position: 'absolute',
+  },
+  note: {
+    fontSize: 12,
+    fontStyle: 'italic',
+    opacity: 0.7,
+    marginTop: 8,
   },
 });
